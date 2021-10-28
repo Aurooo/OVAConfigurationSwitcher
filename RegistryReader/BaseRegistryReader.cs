@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using RegistryReader.Interfaces;
 using RegistryReader.Models;
 using Microsoft.Win32;

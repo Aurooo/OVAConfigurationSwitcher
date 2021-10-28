@@ -50,6 +50,7 @@
     <Compile Include="Models\RegistryValueElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistryFactory.cs" />
+    <Compile Include="RegistryStream.cs" />
     <Compile Include="UsersRegistryReader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

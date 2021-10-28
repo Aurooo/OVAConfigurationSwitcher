@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 
 namespace OVAConfigSwitcher.Business.Contracts.Models
 {
@@ -17,8 +12,8 @@ namespace OVAConfigSwitcher.Business.Contracts.Models
         {
             var directoryPath = Path.GetDirectoryName(filePath);
 
-            AgencyFileName = filePath.Replace(directoryPath + Path.DirectorySeparatorChar, "");
             FilePath = filePath;
+            AgencyFileName = filePath.Replace(directoryPath + Path.DirectorySeparatorChar, "");
             EnvironmentName = directoryPath.Replace(Path.GetDirectoryName(directoryPath), "");
         }
     }

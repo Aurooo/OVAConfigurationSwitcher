@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistryReader", "RegistryReader\RegistryReader.csproj", "{075B4480-9020-4EC7-A079-05182C37D7A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVAConfigSwitcher.Business.Contracts", "OVAConfigSwitcher.Business.Contracts\OVAConfigSwitcher.Business.Contracts.csproj", "{C5C377BA-3FFB-4EAB-8F18-2AFD74B8E5DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{075B4480-9020-4EC7-A079-05182C37D7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{075B4480-9020-4EC7-A079-05182C37D7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{075B4480-9020-4EC7-A079-05182C37D7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C377BA-3FFB-4EAB-8F18-2AFD74B8E5DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C377BA-3FFB-4EAB-8F18-2AFD74B8E5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C377BA-3FFB-4EAB-8F18-2AFD74B8E5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C377BA-3FFB-4EAB-8F18-2AFD74B8E5DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

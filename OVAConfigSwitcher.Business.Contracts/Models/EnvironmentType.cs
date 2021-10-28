@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace OVAConfigSwitcher.Business.Contracts.Models
 {
-    class EnvironmentType
+    public class EnvironmentType
     {
+        public string EnvironmentName { get; set; }
+        public string EnvironmentPath { get; set; }
+
+        public EnvironmentType(string environmentPath)
+        {
+            EnvironmentPath = environmentPath;
+            EnvironmentName = environmentPath.Replace(Path.GetDirectoryName(environmentPath) + Path.DirectorySeparatorChar, "");
+        }
     }
 }
