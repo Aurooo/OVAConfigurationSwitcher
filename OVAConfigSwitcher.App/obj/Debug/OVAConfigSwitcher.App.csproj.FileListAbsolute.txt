@@ -1,6 +1,3 @@
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\obj\Debug\OVAConfigSwitcher.App.csproj.AssemblyReference.cache
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\obj\Debug\OVAConfigSwitcher.App.csproj.CoreCompileInputs.cache
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Program.cs
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\ConsoleApp.exe.config
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\ConsoleApp.exe
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\ConsoleApp.pdb
@@ -11,6 +8,7 @@ C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bi
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.dll
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.Xml.dll
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.dll
@@ -37,6 +35,7 @@ C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bi
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\System.ValueTuple.dll
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\OVAConfigSwitcher.Business.Contracts.dll
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\OVAConfigSwitcher.Business.pdb
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\OVAConfigSwitcher.Business.dll.config
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\RegistryReader.pdb
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.xml
@@ -45,6 +44,7 @@ C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bi
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.EnvironmentVariables.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.Json.xml
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.Configuration.Xml.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.xml
@@ -68,6 +68,8 @@ C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bi
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\System.ValueTuple.xml
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\bin\Debug\OVAConfigSwitcher.Business.Contracts.pdb
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\obj\Debug\OVAConfigSwitcher.App.csproj.AssemblyReference.cache
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\obj\Debug\OVAConfigSwitcher.App.csproj.CoreCompileInputs.cache
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\obj\Debug\OVAConfigSwitcher.App.csproj.CopyComplete
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\obj\Debug\ConsoleApp.exe
 C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.App\obj\Debug\ConsoleApp.pdb
