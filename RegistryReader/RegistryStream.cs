@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using RegistryReader.Interfaces;
 using RegistryReader.Models;
+
 namespace RegistryReader
 {
     public class RegistryStream
