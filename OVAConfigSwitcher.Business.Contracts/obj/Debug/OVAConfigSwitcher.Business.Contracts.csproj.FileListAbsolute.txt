@@ -1,0 +1,6 @@
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.Business.Contracts\bin\Debug\OVAConfigSwitcher.Business.Contracts.dll
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.Business.Contracts\bin\Debug\OVAConfigSwitcher.Business.Contracts.pdb
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.Business.Contracts\obj\Debug\OVAConfigSwitcher.Business.Contracts.csproj.AssemblyReference.cache
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.Business.Contracts\obj\Debug\OVAConfigSwitcher.Business.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.Business.Contracts\obj\Debug\OVAConfigSwitcher.Business.Contracts.dll
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.Business.Contracts\obj\Debug\OVAConfigSwitcher.Business.Contracts.pdb

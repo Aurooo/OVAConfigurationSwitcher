@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVAConfigSwitcher.Business.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVAConfigSwitcher.Business", "OVAConfigSwitcher.Business\OVAConfigSwitcher.Business.csproj", "{1BC08BBB-D43D-4001-B1A1-8262A3DF731F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVAConfigSwitcher.ConsoleApp", "OVAConfigSwitcher.ConsoleApp\OVAConfigSwitcher.ConsoleApp.csproj", "{F1D54A8F-810B-4F5D-84B2-9860B96237BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVAConfigSwitcher.App", "OVAConfigSwitcher.App\OVAConfigSwitcher.App.csproj", "{F1D54A8F-810B-4F5D-84B2-9860B96237BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

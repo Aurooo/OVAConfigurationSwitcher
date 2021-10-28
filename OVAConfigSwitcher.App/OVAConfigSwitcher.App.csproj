@@ -169,5 +169,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OVAConfigSwitcher.Business\OVAConfigSwitcher.Business.csproj">
+      <Project>{1bc08bbb-d43d-4001-b1a1-8262a3df731f}</Project>
+      <Name>OVAConfigSwitcher.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegistryReader\RegistryReader.csproj">
+      <Project>{075b4480-9020-4ec7-a079-05182c37d7a4}</Project>
+      <Name>RegistryReader</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

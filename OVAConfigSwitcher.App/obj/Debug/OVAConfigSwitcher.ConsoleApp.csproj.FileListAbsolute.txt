@@ -1,0 +1,2 @@
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.ConsoleApp\obj\Debug\OVAConfigSwitcher.ConsoleApp.csproj.AssemblyReference.cache
+C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\OVAConfigSwitcher.ConsoleApp\obj\Debug\OVAConfigSwitcher.ConsoleApp.csproj.CoreCompileInputs.cache
