@@ -4,9 +4,8 @@ using RegistryReader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OVAConfigSwitcher.Business;
+using System.IO;
 
 namespace OVAConfigSwitcher.App
 {
@@ -34,15 +33,42 @@ namespace OVAConfigSwitcher.App
             // complete switch in configuration
         }
 
-        private static void ValidateArgs(string[] args)
+        private void ValidateArgs(string[] args)
         {
             if (!(args.Length == 2))
-                throw new ArgumentException(nameof(args));
+                throw new ArgumentException("Provide 2 arguments: env configfile");
 
-            if (!args[0].StartsWith("-") && "pre/prod/dev".Contains(args[0]))
-                throw new ArgumentException(nameof(args));
+            //get envs from root
+            if (!args[0].StartsWith("-") && "pre/prod/test".Contains(args[0]))
+                throw new ArgumentException("Not a valid environment");
 
             //finish validating for xml file (arg[1])
+            if (!args[1].Contains(".xml") && !args[1].Contains(".json"))
+                throw new ArgumentException("Not an xml or json file");
+
+            if (!ConfigurationExists(_appSettings, args))
+                throw new FileNotFoundException($"{args[1]} not found in {args[0]}");
+        }
+
+        private bool ConfigurationExists(AppSettings appSettings, string[] args)
+        {
+            string environment = appSettings.RootDirectory;
+
+            switch (args[0])
+            {
+                case "-test":
+                    environment = Path.Combine(environment, "test");
+                    break;
+                case "-pre":
+                    environment = Path.Combine(environment, "pre_prod");
+                    break;
+                case "-prod":
+                    environment = Path.Combine(environment, "prod");
+                    break;
+            }
+
+            return File.Exists(Path.Combine(environment, args[1]));
+
         }
     }
 }
