@@ -25,10 +25,19 @@ namespace OVAConfigSwitcher.App
 
         public void Run(string[] args)
         {
-            var environments = ConfigSwitcher.GetEnvironments().ToList();
             var usage = "\n\rUse -e to list available environments.\n\r" +
                 "Use -f <envName> to list available configuration files in <envName>.\n\r" +
                 "Use -a <envName> <configFile> to apply new configuration.\n\r";
+
+            var environments = ConfigSwitcher.GetEnvironments().ToList();
+
+            if (args.Length == 1 && args[0] == "-h")
+            {
+                Console.WriteLine(usage);
+                Console.ReadLine();
+
+                return;
+            }
 
             if (args.Length == 1 && args[0] == "-e")
             {
@@ -65,6 +74,7 @@ namespace OVAConfigSwitcher.App
 
             return;
         }
+
         private ConfigSwitcher InitialiseConfigSwitcher()
         {
             var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
