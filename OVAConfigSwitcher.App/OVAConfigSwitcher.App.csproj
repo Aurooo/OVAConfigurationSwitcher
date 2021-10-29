@@ -176,6 +176,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OVAConfigSwitcher.Business.Contracts\OVAConfigSwitcher.Business.Contracts.csproj">
+      <Project>{C5C377BA-3FFB-4EAB-8F18-2AFD74B8E5DF}</Project>
+      <Name>OVAConfigSwitcher.Business.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OVAConfigSwitcher.Business\OVAConfigSwitcher.Business.csproj">
       <Project>{1bc08bbb-d43d-4001-b1a1-8262a3df731f}</Project>
       <Name>OVAConfigSwitcher.Business</Name>
