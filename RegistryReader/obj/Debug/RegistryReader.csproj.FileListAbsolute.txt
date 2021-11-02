@@ -1,6 +1,0 @@
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\RegistryReader\bin\Debug\RegistryReader.dll
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\RegistryReader\bin\Debug\RegistryReader.pdb
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\RegistryReader\obj\Debug\RegistryReader.csproj.AssemblyReference.cache
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\RegistryReader\obj\Debug\RegistryReader.csproj.CoreCompileInputs.cache
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\RegistryReader\obj\Debug\RegistryReader.dll
-C:\Users\aurom\source\repos\C#\OVAConfigurationSwitcher\RegistryReader\obj\Debug\RegistryReader.pdb
