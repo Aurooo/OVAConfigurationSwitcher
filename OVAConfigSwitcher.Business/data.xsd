@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Configuration" msprop:Generator_TableClassName="ConfigurationDataTable" msprop:Generator_TableVarName="tableConfiguration" msprop:Generator_TablePropName="Configuration" msprop:Generator_RowDeletingName="ConfigurationRowDeleting" msprop:Generator_RowChangingName="ConfigurationRowChanging" msprop:Generator_RowEvHandlerName="ConfigurationRowChangeEventHandler" msprop:Generator_RowDeletedName="ConfigurationRowDeleted" msprop:Generator_UserTableName="Configuration" msprop:Generator_RowChangedName="ConfigurationRowChanged" msprop:Generator_RowEvArgName="ConfigurationRowChangeEvent" msprop:Generator_RowClassName="ConfigurationRow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DATABASENAME" msprop:Generator_ColumnVarNameInTable="columnDATABASENAME" msprop:Generator_ColumnPropNameInRow="DATABASENAME" msprop:Generator_ColumnPropNameInTable="DATABASENAMEColumn" msprop:Generator_UserColumnName="DATABASENAME" type="xs:string" minOccurs="0" />
+        <xs:element name="SERVERNAME" msprop:Generator_ColumnVarNameInTable="columnSERVERNAME" msprop:Generator_ColumnPropNameInRow="SERVERNAME" msprop:Generator_ColumnPropNameInTable="SERVERNAMEColumn" msprop:Generator_UserColumnName="SERVERNAME" type="xs:string" minOccurs="0" />
+        <xs:element name="Office365" msprop:Generator_ColumnVarNameInTable="columnOffice365" msprop:Generator_ColumnPropNameInRow="Office365" msprop:Generator_ColumnPropNameInTable="Office365Column" msprop:Generator_UserColumnName="Office365" type="xs:string" minOccurs="0" />
+        <xs:element name="Office365URL" msprop:Generator_ColumnVarNameInTable="columnOffice365URL" msprop:Generator_ColumnPropNameInRow="Office365URL" msprop:Generator_ColumnPropNameInTable="Office365URLColumn" msprop:Generator_UserColumnName="Office365URL" type="xs:string" minOccurs="0" />
+        <xs:element name="Queues" msprop:Generator_ColumnVarNameInTable="columnQueues" msprop:Generator_ColumnPropNameInRow="Queues" msprop:Generator_ColumnPropNameInTable="QueuesColumn" msprop:Generator_UserColumnName="Queues" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Queue" nillable="true" msprop:Generator_TableClassName="QueueDataTable" msprop:Generator_TableVarName="tableQueue" msprop:Generator_TablePropName="Queue" msprop:Generator_RowDeletingName="QueueRowDeleting" msprop:Generator_RowChangingName="QueueRowChanging" msprop:Generator_RowEvHandlerName="QueueRowChangeEventHandler" msprop:Generator_RowDeletedName="QueueRowDeleted" msprop:Generator_UserTableName="Queue" msprop:Generator_RowChangedName="QueueRowChanged" msprop:Generator_RowEvArgName="QueueRowChangeEvent" msprop:Generator_RowClassName="QueueRow">
+    <xs:complexType>
+      <xs:simpleContent msprop:Generator_ColumnVarNameInTable="columnQueue_Text" msprop:Generator_ColumnPropNameInRow="Queue_Text" msprop:Generator_ColumnPropNameInTable="Queue_TextColumn" msprop:Generator_UserColumnName="Queue_Text" msdata:ColumnName="Queue_Text" msdata:Ordinal="2">
+        <xs:extension base="xs:string">
+          <xs:attribute name="Active" msprop:Generator_ColumnVarNameInTable="columnActive" msprop:Generator_ColumnPropNameInRow="Active" msprop:Generator_ColumnPropNameInTable="ActiveColumn" msprop:Generator_UserColumnName="Active" type="xs:string" />
+          <xs:attribute name="TimeoutInMilliseconds" msprop:Generator_ColumnVarNameInTable="columnTimeoutInMilliseconds" msprop:Generator_ColumnPropNameInRow="TimeoutInMilliseconds" msprop:Generator_ColumnPropNameInTable="TimeoutInMillisecondsColumn" msprop:Generator_UserColumnName="TimeoutInMilliseconds" type="xs:string" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="NewDataSet" msprop:Generator_UserDSName="NewDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Configuration" />
+        <xs:element ref="Queue" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

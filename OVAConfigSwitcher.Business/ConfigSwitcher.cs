@@ -20,11 +20,9 @@ namespace OVAConfigSwitcher.Business
 
         public bool ApplyConfigurationFile(AgencyConfigurationFile agencyConfigurationFile)
         {
-            if (!File.Exists(agencyConfigurationFile.FilePath))
-            {
-                throw new FileNotFoundException($"file does not exist: {nameof(agencyConfigurationFile.FilePath)}");
-            }
-            // validazione xml (incluso sopra)
+            var validator = new XmlValidator();
+            validator.Validate(agencyConfigurationFile);
+
             File.Copy(agencyConfigurationFile.FilePath, _currentConfiguration, true);
 
             return true;

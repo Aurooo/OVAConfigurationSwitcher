@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\InvalidConfigurationException.cs" />
     <Compile Include="Interfaces\IConfigSwitcher.cs" />
+    <Compile Include="Interfaces\IXmlValidator.cs" />
     <Compile Include="Models\AgencyConfigurationFile.cs" />
     <Compile Include="Models\EnvironmentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
