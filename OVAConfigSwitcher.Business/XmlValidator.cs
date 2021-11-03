@@ -1,46 +1,31 @@
 ﻿using OVAConfigSwitcher.Business.Contracts.Models;
-using OVAConfigSwitcher.Business.Contracts.Interfaces;
 using OVAConfigSwitcher.Business.Contracts.Exceptions;
-using System.Xml;
 using System.Xml.Schema;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Xml.Serialization;
+using System.Xml.Linq;
+using System;
 
 namespace OVAConfigSwitcher.Business
 {
-    class XmlValidator : IXmlValidator
+    class XmlValidator
     {
         public bool Validate(AgencyConfigurationFile agencyConfigurationFile)
         {
+
             if (!File.Exists(agencyConfigurationFile.FilePath))
             {
                 throw new FileNotFoundException($"file does not exist: {nameof(agencyConfigurationFile.FilePath)}");
             }
 
-            XmlReader reader = XmlReader.Create(agencyConfigurationFile.FilePath);
+            XmlSchemaSet configurationSchema = new XmlSchemaSet();
+            configurationSchema.Add("", "Configuration.xsd");
 
-            XmlSerializer serializer = new XmlSerializer(typeof(ConfigurationDataTable));
-            ConfigurationDataTable configuration = serializer.Deserialize(reader) as ConfigurationDataTable;
+            XDocument newConfiguration = XDocument.Load(agencyConfigurationFile.FilePath);
 
-            XmlSchemaSet schemaSet = new XmlSchemaSet();
-            schemaSet.Add("", "data.xsd");
+            if (!string.IsNullOrWhiteSpace(newConfiguration.Root.GetDefaultNamespace().ToString()))
+                throw new InvalidConfigurationException("Namespace is not empty");
 
-            XmlSchemaValidator validator = new XmlSchemaValidator(null, schemaSet, null, XmlSchemaValidationFlags.None);
-            validator.Initialize();
-
-            try
-            {
-                validator.ValidateElement("Configuration", "", null);
-            }
-            catch (XmlSchemaValidationException)
-            {
-                throw new InvalidConfigurationException();
-            }
+            newConfiguration.Validate(configurationSchema, (s, e) => throw new InvalidConfigurationException(e.Message));
 
             return true;
         }

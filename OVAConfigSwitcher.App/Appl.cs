@@ -2,11 +2,10 @@
 using Microsoft.Extensions.Options;
 using RegistryReader;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using OVAConfigSwitcher.Business;
-using System.IO;
 using OVAConfigSwitcher.Business.Contracts.Models;
+using OVAConfigSwitcher.Business.Contracts.Exceptions;
 
 namespace OVAConfigSwitcher.App
 {
@@ -103,7 +102,17 @@ namespace OVAConfigSwitcher.App
 
                 } while (exit);
 
-                configSwitcher.ApplyConfigurationFile(chosenConfigurationFile);
+                try
+                {
+                    configSwitcher.ApplyConfigurationFile(chosenConfigurationFile);
+                }
+                catch(InvalidConfigurationException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                    return;
+                }
+                
 
                 _logger.LogInformation($"Now using: {chosenEnvironment.EnvironmentName} => {chosenConfigurationFile.AgencyFileName}. Configuration switch succesful");
                 Console.ReadLine();

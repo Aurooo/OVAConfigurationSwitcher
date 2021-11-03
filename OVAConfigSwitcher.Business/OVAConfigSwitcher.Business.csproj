@@ -109,12 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigSwitcher.cs" />
-    <Compile Include="ConfigurationDataTable.cs" />
-    <Compile Include="data.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>data.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlValidator.cs" />
   </ItemGroup>
@@ -126,16 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="data.xsc">
-      <DependentUpon>data.xsd</DependentUpon>
-    </None>
-    <None Include="data.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>data.Designer.cs</LastGenOutput>
+    <None Include="Configuration.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="data.xss">
-      <DependentUpon>data.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
