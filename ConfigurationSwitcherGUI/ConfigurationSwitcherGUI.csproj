@@ -4,7 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+<<<<<<< HEAD
     <ProjectGuid>{006E53A5-0D97-41DE-B8F5-4F4B582463BC}</ProjectGuid>
+=======
+    <ProjectGuid>{AA1A87F7-34F7-4082-9DB8-7CB69F6595FF}</ProjectGuid>
+>>>>>>> ca756612fb713edea662dab884567e17c077f255
     <OutputType>WinExe</OutputType>
     <RootNamespace>ConfigurationSwitcherGUI</RootNamespace>
     <AssemblyName>ConfigurationSwitcherGUI</AssemblyName>
