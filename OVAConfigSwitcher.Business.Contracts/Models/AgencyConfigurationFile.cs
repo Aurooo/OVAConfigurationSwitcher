@@ -14,7 +14,7 @@ namespace OVAConfigSwitcher.Business.Contracts.Models
 
             FilePath = filePath;
             AgencyFileName = filePath.Replace(directoryPath + Path.DirectorySeparatorChar, "");
-            EnvironmentName = directoryPath.Replace(Path.GetDirectoryName(directoryPath), "");
+            EnvironmentName = directoryPath.Replace(Path.GetDirectoryName(directoryPath) + Path.DirectorySeparatorChar, "");
         }
     }
 }

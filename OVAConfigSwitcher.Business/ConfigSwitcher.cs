@@ -20,7 +20,8 @@ namespace OVAConfigSwitcher.Business
 
         public bool ApplyConfigurationFile(AgencyConfigurationFile agencyConfigurationFile)
         {
-            var validator = new XmlValidator();
+            var validator = new ConfigurationValidator();
+
             validator.Validate(agencyConfigurationFile);
 
             File.Copy(agencyConfigurationFile.FilePath, _currentConfiguration, true);

@@ -7,9 +7,9 @@ using System;
 
 namespace OVAConfigSwitcher.Business
 {
-    class XmlValidator
+    class ConfigurationValidator
     {
-        public bool Validate(AgencyConfigurationFile agencyConfigurationFile)
+        public void Validate(AgencyConfigurationFile agencyConfigurationFile)
         {
 
             if (!File.Exists(agencyConfigurationFile.FilePath))
@@ -18,7 +18,7 @@ namespace OVAConfigSwitcher.Business
             }
 
             XmlSchemaSet configurationSchema = new XmlSchemaSet();
-            configurationSchema.Add("", "Configuration.xsd");
+            configurationSchema.Add("", "OVAConfigurationSchema.xsd");
 
             XDocument newConfiguration = XDocument.Load(agencyConfigurationFile.FilePath);
 
@@ -26,8 +26,6 @@ namespace OVAConfigSwitcher.Business
                 throw new InvalidConfigurationException("Namespace is not empty");
 
             newConfiguration.Validate(configurationSchema, (s, e) => throw new InvalidConfigurationException(e.Message));
-
-            return true;
         }
     }
 }
