@@ -19,7 +19,6 @@ namespace OVAConfigSwitcher.App
             var serviceProvider = services.BuildServiceProvider();
 
             serviceProvider.GetService<Appl>().Run(args);
-
         }
 
         private static void ConfigureServices(ServiceCollection services)

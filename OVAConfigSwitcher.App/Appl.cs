@@ -63,6 +63,7 @@ namespace OVAConfigSwitcher.App
                         Console.WriteLine("\n:> Invalid environment\n");
                     }
                 } while (!exit);
+
                 do
                 {
                     string inputString;
