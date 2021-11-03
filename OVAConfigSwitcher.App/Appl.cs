@@ -6,6 +6,7 @@ using System.Linq;
 using OVAConfigSwitcher.Business;
 using OVAConfigSwitcher.Business.Contracts.Models;
 using OVAConfigSwitcher.Business.Contracts.Exceptions;
+using System.Collections.Generic;
 
 namespace OVAConfigSwitcher.App
 {
@@ -24,7 +25,6 @@ namespace OVAConfigSwitcher.App
 
         public void Run(string[] args)
         {
-            // menu interattivo
             var usage = "\n\rUse -e to list available environments.\n\r" +
                 "Use -f <envName> to list available configuration files in <envName>.\n\r" +
                 "Use -a <envName> <configFile> to apply new configuration.\n\r";
@@ -38,23 +38,17 @@ namespace OVAConfigSwitcher.App
 
                 do
                 {
-                    int count = 0;
                     string inputString;
-
                     var environments = configSwitcher.GetEnvironments().ToList();
 
                     Console.WriteLine("Select environment:");
-
-                    foreach (var env in environments)
-                    {
-                        Console.WriteLine($"{count++} - {env.EnvironmentName}");
-                    }
+                    Print(environments);
 
                     inputString = Console.ReadLine();
 
-                    if (Int32.TryParse(inputString, out count) && count >= 0 && count < environments.Count)
+                    if (Int32.TryParse(inputString, out int index) && index >= 0 && index < environments.Count)
                     {
-                        chosenEnvironment = environments[count];
+                        chosenEnvironment = environments[index];
                         exit = true;
                     }
                     else if (IsValidEnvironment(inputString))
@@ -71,22 +65,25 @@ namespace OVAConfigSwitcher.App
 
                 do
                 {
-                    int count = 0;
+                    int count = 1;
                     string inputString;
+
                     var configFiles = configSwitcher.GetAgencyConfigurationFiles(chosenEnvironment.EnvironmentName).ToList();
 
-                    Console.WriteLine("Select configuration file:");
+                    Console.WriteLine($"\n{chosenEnvironment.EnvironmentName} ->");
+                    Console.WriteLine("  0 - ...");
 
-                    foreach (var file in configFiles)
-                    {
-                        Console.WriteLine($"{count++} - {file.AgencyFileName}");
-                    }
+                    Print(configFiles);
 
                     inputString = Console.ReadLine();
 
+                    if (Int32.TryParse(inputString, out count) && count == 0)
+                    {
+                        GoBack();
+                    }
                     if (Int32.TryParse(inputString, out count) && count >= 0 && count < configFiles.Count)
                     {
-                        chosenConfigurationFile = configFiles[count];
+                        chosenConfigurationFile = configFiles[count - 1];
                         exit = false;
                     }
                     else if (IsValidConfigurationFile(chosenEnvironment.EnvironmentName, inputString))
@@ -150,9 +147,18 @@ namespace OVAConfigSwitcher.App
                         .Where(file => file.AgencyFileName == args[2])
                         .Select(file => file).Single();
 
-                    configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
+                    try
+                    {
+                        configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
+                    }
+                    catch (InvalidConfigurationException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.ReadLine();
+                        return;
+                    }
 
-                    _logger.LogInformation($"Now using: {args[1]} => {agencyConfigurationFile.AgencyFileName}. Configuration switch succesful");
+                    _logger.LogInformation($"Now using: {args[1]} => {agencyConfigurationFile.AgencyFileName}. Configuration switch successful");
                     Console.ReadLine();
 
                     return;
@@ -163,11 +169,9 @@ namespace OVAConfigSwitcher.App
 
                 return;
             }
-
-
-
-
         }
+
+        
 
         private ConfigSwitcher InitialiseConfigSwitcher()
         {
@@ -177,17 +181,37 @@ namespace OVAConfigSwitcher.App
 
             return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);
         }
-
+        private void Print(List<AgencyConfigurationFile> configFiles)
+        {
+            int count = 1;
+            foreach (var file in configFiles)
+            {
+                Console.WriteLine($"  {count++} - {file.AgencyFileName}");
+            }
+        }
+        private void Print(List<EnvironmentType> environments)
+        {
+            int count = 0;
+            foreach (var env in environments)
+            {
+                Console.WriteLine($"{count++} - {env.EnvironmentName}");
+            }
+        }
         private bool IsValidConfigurationFile(string environment, string agencyConfigurationFile)
         {
             return configSwitcher.GetAgencyConfigurationFiles(environment).Where(file => file.AgencyFileName == agencyConfigurationFile)
                 .Select(env => env.AgencyFileName).ToList().Count > 0;
         }
-
         private bool IsValidEnvironment(string environment)
         {
             return configSwitcher.GetEnvironments().Where(env => env.EnvironmentName == environment)
                 .Select(env => env.EnvironmentName).ToList().Count > 0;
+        }
+        private void GoBack()
+        {
+            string[] a = new string[0];
+            Console.Clear();
+            Run(a);
         }
     }
 }
