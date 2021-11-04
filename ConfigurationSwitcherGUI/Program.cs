@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,19 @@ namespace ConfigurationSwitcherGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            var services = new ServiceCollection();
+            ConfiguerServices(services);
+
+
+
+
             Application.Run(new Form1());
+        }
+
+        private static void ConfiguerServices(ServiceCollection services)
+        {
+            services.AddLogging
         }
     }
 }
