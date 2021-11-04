@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ConfigurationSwitcherGUI.View;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
@@ -22,7 +23,7 @@ namespace ConfigurationSwitcherGUI
 
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
-                var form1 = serviceProvider.GetRequiredService<Form1>();
+                var form1 = serviceProvider.GetRequiredService<ConfigurationSwitcherForm>();
                 Application.Run(form1);
             }
         }
@@ -36,7 +37,7 @@ namespace ConfigurationSwitcherGUI
 
             services.Configure<AppSettings>(configuration.GetSection("App"));
 
-            services.AddTransient<Form1>();
+            services.AddTransient<ConfigurationSwitcherForm>();
         }
     }
 }

@@ -44,6 +44,7 @@
     <Compile Include="Exceptions\InvalidConfigurationException.cs" />
     <Compile Include="Interfaces\IConfigSwitcher.cs" />
     <Compile Include="Models\AgencyConfigurationFile.cs" />
+    <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\EnvironmentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

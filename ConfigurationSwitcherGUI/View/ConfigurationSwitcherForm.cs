@@ -10,15 +10,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OVAConfigSwitcher.Business.Contracts.Models;
 
-namespace ConfigurationSwitcherGUI
+namespace ConfigurationSwitcherGUI.View
 {
-    public partial class Form1 : Form
+    public partial class ConfigurationSwitcherForm : Form, IConfigurationSwitcherView
     {
         private readonly ILogger _logger;
         private readonly AppSettings _appSettings;
         private ConfigSwitcher configSwitcher;
-        public Form1(IOptions<AppSettings> appsettings, ILogger<Form1> logger)
+        public ConfigurationSwitcherForm(IOptions<AppSettings> appsettings, ILogger<ConfigurationSwitcherForm> logger)
         {
             _appSettings = appsettings.Value;
             _logger = logger;

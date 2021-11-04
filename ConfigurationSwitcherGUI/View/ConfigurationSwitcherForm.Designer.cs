@@ -1,6 +1,6 @@
-﻿namespace ConfigurationSwitcherGUI
+﻿namespace ConfigurationSwitcherGUI.View
 {
-    partial class Form1
+    partial class ConfigurationSwitcherForm
     {
         /// <summary>
         /// Required designer variable.

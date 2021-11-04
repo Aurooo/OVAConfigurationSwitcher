@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConfigurationSwitcherGUI
+namespace OVAConfigSwitcher.Business.Contracts.Models
 {
     public class AppSettings
     {
