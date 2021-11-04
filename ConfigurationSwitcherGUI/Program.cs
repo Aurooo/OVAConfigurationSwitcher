@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +31,14 @@ namespace ConfigurationSwitcherGUI
 
         private static void ConfiguerServices(ServiceCollection services)
         {
-            services.AddLogging
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", false, true)
+                .Build();
+
+            services.Configure<AppSettings>(configuration.GetSection("App"));
+
+            services.AddTransient<Form1>();
         }
     }
 }
