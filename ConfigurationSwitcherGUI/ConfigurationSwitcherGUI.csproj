@@ -198,5 +198,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OVAConfigSwitcher.Business\OVAConfigSwitcher.Business.csproj">
+      <Project>{1BC08BBB-D43D-4001-B1A1-8262A3DF731F}</Project>
+      <Name>OVAConfigSwitcher.Business</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

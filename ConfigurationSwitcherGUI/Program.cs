@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConfigurationSwitcherGUI
@@ -23,10 +20,11 @@ namespace ConfigurationSwitcherGUI
             var services = new ServiceCollection();
             ConfiguerServices(services);
 
-
-
-
-            Application.Run(new Form1());
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                var form1 = serviceProvider.GetRequiredService<Form1>();
+                Application.Run(form1);
+            }
         }
 
         private static void ConfiguerServices(ServiceCollection services)
