@@ -26,18 +26,18 @@ namespace ConfigurationSwitcherGUI.View
         {
             _appSettings = appsettings.Value;
             _logger = logger;
-            configSwitcher = InitializeConfigSwitcher();
+            //configSwitcher = InitializeConfigSwitcher();
             InitializeComponent();
         }
 
-        private ConfigSwitcher InitializeConfigSwitcher()
-        {
-            var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
-                .Where(element => element.Name == "ConfigFilePath")
-                .Select(element => element).FirstOrDefault().Value;
+        //private ConfigSwitcher InitializeConfigSwitcher()
+        //{
+        //    var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
+        //        .Where(element => element.Name == "ConfigFilePath")
+        //        .Select(element => element).FirstOrDefault().Value;
 
-            return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);
-        }
+        //    return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);
+        //}
         private void InitializeTree()
         {
             twConfigurations.AfterSelect += new TreeViewEventHandler(twConfigurations_AfterSelect);

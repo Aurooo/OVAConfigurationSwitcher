@@ -27,18 +27,7 @@ namespace ConfigurationSwitcherGUI.Presenter
             this.view = view;
             _appSettings = appsettings.Value;
             _logger = logger;
-            configSwitcher = InitializeConfigSwitcher();
-        }
-
-        
-
-        private ConfigSwitcher InitializeConfigSwitcher()
-        {
-            var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
-                .Where(element => element.Name == "ConfigFilePath")
-                .Select(element => element).FirstOrDefault().Value;
-
-            return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);
+            configSwitcher = new ConfigSwitcher(appsettings);
         }
 
         public IConfigurationSwitcherView ShowView()
