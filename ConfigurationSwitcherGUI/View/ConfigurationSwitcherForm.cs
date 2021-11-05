@@ -34,7 +34,7 @@ namespace ConfigurationSwitcherGUI.View
         private ConfigSwitcher InitializeConfigSwitcher()
         {
             var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
-                .Where(element => element.Name == "ConfigFilePath1")
+                .Where(element => element.Name == "ConfigFilePath")
                 .Select(element => element).FirstOrDefault().Value;
 
             return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);

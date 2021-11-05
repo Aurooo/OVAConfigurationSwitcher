@@ -167,16 +167,15 @@ namespace OVAConfigSwitcher.App
         private void Log(AgencyConfigurationFile agencyConfigurationFile)
         {
             Console.WriteLine($":> Now using: {agencyConfigurationFile.EnvironmentName} => " +
-            $"{agencyConfigurationFile.AgencyFileName}. Configuration switch succesful");
+            $"{agencyConfigurationFile.AgencyFileName}. Configuration switch successful");
 
             _logger.LogInformation($"Now using: {agencyConfigurationFile.EnvironmentName} => " +
                 $"{agencyConfigurationFile.AgencyFileName}. Configuration switch successful");
         }
-
         private ConfigSwitcher InitialiseConfigSwitcher()
         {
             var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
-                .Where(element => element.Name == "ConfigFilePath1")
+                .Where(element => element.Name == "ConfigFilePath")
                 .Select(element => element).FirstOrDefault().Value;
 
             return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);

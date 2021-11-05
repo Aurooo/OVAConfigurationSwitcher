@@ -21,8 +21,12 @@ namespace OVAConfigSwitcher.Business
         public bool ApplyConfigurationFile(AgencyConfigurationFile agencyConfigurationFile)
         {
             var validator = new ConfigurationValidator();
-
             validator.Validate(agencyConfigurationFile);
+
+            if (!Directory.Exists(Path.GetDirectoryName(_currentConfiguration)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(_currentConfiguration));
+            }
 
             File.Copy(agencyConfigurationFile.FilePath, _currentConfiguration, true);
 
