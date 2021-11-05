@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +30,6 @@ namespace ConfigurationSwitcherGUI.View
             InitializeComponent();
         }
 
-
-
         private ConfigSwitcher InitializeConfigSwitcher()
         {
             var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
@@ -39,11 +38,9 @@ namespace ConfigurationSwitcherGUI.View
 
             return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);
         }
-
         private void InitializeTree()
         {
-            twConfigurations.AfterSelect +=
-        new TreeViewEventHandler(twConfigurations_AfterSelect);
+            twConfigurations.AfterSelect += new TreeViewEventHandler(twConfigurations_AfterSelect);
 
             twConfigurations.LabelEdit = false;
 
@@ -61,18 +58,44 @@ namespace ConfigurationSwitcherGUI.View
             }
         }
 
+
+
+        #region events
         private void ConfigurationSwitcherForm_Load(object sender, EventArgs e)
         {
-
             InitializeTree();
+            lblRoot.Text = _appSettings.RootDirectory;
+            lblError.MouseHover += LblError_MouseHover;
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            var fullPath = Path.Combine(_appSettings.RootDirectory, tbFilePath.Text.Replace("..\\", ""));
+            try
+            {
+                configSwitcher.ApplyConfigurationFile(new AgencyConfigurationFile(
+                    fullPath));
+                lblError.Text = "Applied";
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+
         }
 
         private void twConfigurations_AfterSelect(object sender, TreeViewEventArgs e)
         {
             var tree = sender as TreeView;
-            //tbFilePath.Text = 
+            if (tree.SelectedNode.Text.ToLower().Contains(".xml"))
+                tbFilePath.Text = Path.Combine("..", tree.SelectedNode.Parent.Text, tree.SelectedNode.Text);
         }
 
+        private void LblError_MouseHover(object sender, EventArgs e)
+        {
+            tpError.SetToolTip(lblError, lblError.Text);
+        }
+        #endregion
 
     }
 }

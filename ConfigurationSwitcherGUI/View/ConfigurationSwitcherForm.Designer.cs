@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.twConfigurations = new System.Windows.Forms.TreeView();
             this.tbFilePath = new System.Windows.Forms.TextBox();
             this.lblError = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Button();
             this.lblRoot = new System.Windows.Forms.Label();
+            this.tpError = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // twConfigurations
@@ -65,6 +67,7 @@
             this.btnApply.TabIndex = 3;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // lblRoot
             // 
@@ -100,6 +103,7 @@
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Label lblRoot;
+        private System.Windows.Forms.ToolTip tpError;
     }
 }
 
