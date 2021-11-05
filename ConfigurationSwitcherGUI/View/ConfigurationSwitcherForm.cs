@@ -81,7 +81,6 @@ namespace ConfigurationSwitcherGUI.View
             {
                 lblError.Text = ex.Message;
             }
-
         }
 
         private void twConfigurations_AfterSelect(object sender, TreeViewEventArgs e)

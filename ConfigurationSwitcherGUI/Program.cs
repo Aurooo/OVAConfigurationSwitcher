@@ -22,14 +22,13 @@ namespace ConfigurationSwitcherGUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
             var services = new ServiceCollection();
             ConfiguerServices(services);
 
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
-                var configurationSwitcherForm = serviceProvider.GetRequiredService<ConfigurationSwitcherForm>();
-                Application.Run(configurationSwitcherForm);
+                var configurationSwitcherPresenter = serviceProvider.GetRequiredService<ConfigurationSwitcherPresenter>();
+                Application.Run(configurationSwitcherPresenter.ShowView() as Form);
             }
         }
 
@@ -48,8 +47,8 @@ namespace ConfigurationSwitcherGUI
 
             services.Configure<AppSettings>(configuration.GetSection("App"));
 
-            services.AddTransient<ConfigurationSwitcherForm>();
-
+            services.AddTransient<IConfigurationSwitcherView, ConfigurationSwitcherView>();
+            services.AddTransient<ConfigurationSwitcherPresenter>();
         }
     }
 }
