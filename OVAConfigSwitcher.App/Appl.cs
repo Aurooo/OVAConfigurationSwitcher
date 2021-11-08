@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using RegistryReader;
 using System;
 using System.Linq;
 using OVAConfigSwitcher.Business;

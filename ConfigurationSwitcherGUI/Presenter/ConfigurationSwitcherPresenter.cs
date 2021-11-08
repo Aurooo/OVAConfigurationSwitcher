@@ -4,13 +4,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OVAConfigSwitcher.Business;
 using OVAConfigSwitcher.Business.Contracts.Models;
-using RegistryReader;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConfigurationSwitcherGUI.Presenter
@@ -32,10 +29,9 @@ namespace ConfigurationSwitcherGUI.Presenter
 
         public IConfigurationSwitcherView ShowView()
         {
-            PopulateView();
             return view;
         }
-        public void PopulateView()
+        public IEnumerable<EnvironmentDirectory> GetEnvironmentDirectories()
         {
             string name;
             var environments = new List<EnvironmentDirectory>();
@@ -53,7 +49,7 @@ namespace ConfigurationSwitcherGUI.Presenter
                 environments.Add(new EnvironmentDirectory(name, files));
             }
 
-            view.Populate(environments);
+            return environments;
         }
         public bool Apply(string environment, string agencyConfiguration)
         {
@@ -62,10 +58,15 @@ namespace ConfigurationSwitcherGUI.Presenter
             try
             {
                 applied = configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
+                _logger.LogInformation($"Now using: ({agencyConfigurationFile.EnvironmentName})" +
+                    $"{agencyConfigurationFile.AgencyFileName}. Configuration switch successful");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _logger.LogInformation($"Configuration switch error: {ex.Message} in " +
+                    $"({agencyConfigurationFile.EnvironmentName})" +
+                    $"{agencyConfigurationFile.AgencyFileName}. Configuration switch unsuccessful");
             }
 
             return applied;

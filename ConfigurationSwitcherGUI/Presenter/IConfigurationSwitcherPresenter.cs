@@ -1,14 +1,11 @@
-﻿using OVAConfigSwitcher.Business.Contracts.Models;
-using System;
+﻿using ConfigurationSwitcherGUI.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConfigurationSwitcherGUI.Presenter
 {
     public interface IConfigurationSwitcherPresenter
     {
         bool Apply(string environment, string agencyConfiguration);
+        IEnumerable<EnvironmentDirectory> GetEnvironmentDirectories();
     }
 }

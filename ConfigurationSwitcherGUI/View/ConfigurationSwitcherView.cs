@@ -5,13 +5,8 @@ using Microsoft.Extensions.Options;
 using OVAConfigSwitcher.Business.Contracts.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConfigurationSwitcherGUI.View
@@ -23,23 +18,29 @@ namespace ConfigurationSwitcherGUI.View
         {
             presenter = new ConfigurationSwitcherPresenter(this, appsettings, logger);
             InitializeComponent();
-            btnApply.Enabled = false;
+            ConfigureView();
         }
 
-        public void ShowView()
-        {
-            this.Show();
-        }
+        
         public void ShowError(string ErrorMessage)
         {
             lblError.Text = ErrorMessage;
         }
-        public void Populate(IEnumerable<EnvironmentDirectory> environments)
+
+        #region private methods
+
+        private void ConfigureView()
         {
+            PopulateTreeView();
             twConfigurations.AfterSelect += TwConfigurations_AfterSelect;
             twConfigurations.LabelEdit = false;
+            btnApply.Enabled = false;
+        }
+        private void PopulateTreeView()
+        {
+            List<EnvironmentDirectory> environments = presenter.GetEnvironmentDirectories().ToList();
 
-            foreach (var environment in environments.ToList())
+            foreach (var environment in environments)
             {
                 TreeNode node = new TreeNode(environment.Name);
 
@@ -51,7 +52,6 @@ namespace ConfigurationSwitcherGUI.View
                 twConfigurations.Nodes.Add(node);
             }
         }
-
         private void TwConfigurations_AfterSelect(object sender, TreeViewEventArgs e)
         {
             var tree = sender as TreeView;
@@ -61,11 +61,14 @@ namespace ConfigurationSwitcherGUI.View
                 tbFilePath.Text = Path.Combine("..", tree.SelectedNode.Parent.Text, tree.SelectedNode.Text);
                 btnApply.Enabled = true;
             }
+            else
+            {
+                tbFilePath.Text = "";
+                btnApply.Enabled = false;
+            }
 
             lblError.Text = "";
-                
         }
-
         private void btnApply_Click(object sender, EventArgs e)
         {
             bool applied = presenter.Apply(twConfigurations.SelectedNode.Parent.Text, twConfigurations.SelectedNode.Text);
@@ -80,5 +83,7 @@ namespace ConfigurationSwitcherGUI.View
                 lblError.Text = "Could not apply configuration";
             }
         }
+
+        #endregion
     }
 }

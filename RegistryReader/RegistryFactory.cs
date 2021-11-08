@@ -11,7 +11,7 @@ namespace RegistryReader
         public IRegistryReader GetBaseKey(string registryKey)
         {
             if (!IsValidKey(registryKey))
-                throw new ArgumentException(nameof(registryKey));
+                throw new ArgumentException(nameof(registryKey) + " empty or not valid");
 
             string baseKey = registryKey.Split('\\')
                 .Where(substring => substring.Contains("HKEY_"))

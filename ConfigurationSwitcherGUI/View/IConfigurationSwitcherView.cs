@@ -7,8 +7,6 @@ namespace ConfigurationSwitcherGUI.View
 {
     public interface IConfigurationSwitcherView
     {
-        void ShowView();
         void ShowError(string ErrorMessage);
-        void Populate(IEnumerable<EnvironmentDirectory> environments);
     }
 }
