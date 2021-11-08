@@ -42,7 +42,7 @@ namespace OVAConfigSwitcher.Business
             var configurationFiles = new List<AgencyConfigurationFile>();
 
             var configurationFileList = Directory.GetFiles(Path.Combine(_rootPath, environmentName), "*.*", SearchOption.TopDirectoryOnly)
-                .Where(file => file.EndsWith(".xml") || file.EndsWith(".XML"));
+                .Where(file => file.ToLower().EndsWith(".xml"));
 
             foreach (var configurationFile in configurationFileList)
             {
