@@ -9,6 +9,6 @@ namespace ConfigurationSwitcherGUI.Presenter
 {
     public interface IConfigurationSwitcherPresenter
     {
-        void Apply(string environment, string agencyConfiguration);
+        bool Apply(string environment, string agencyConfiguration);
     }
 }

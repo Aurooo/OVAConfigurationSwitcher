@@ -55,17 +55,20 @@ namespace ConfigurationSwitcherGUI.Presenter
 
             view.Populate(environments);
         }
-        public void Apply(string environment, string agencyConfiguration)
+        public bool Apply(string environment, string agencyConfiguration)
         {
             var agencyConfigurationFile = new AgencyConfigurationFile(Path.Combine(_appSettings.RootDirectory, environment, agencyConfiguration));
+            bool applied = false;
             try
             {
-                configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
+                applied = configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
             }
             catch (Exception ex)
             {
-                view.ShowError(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return applied;
         }
     }
 }

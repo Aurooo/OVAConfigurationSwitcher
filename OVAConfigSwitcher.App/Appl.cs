@@ -21,7 +21,7 @@ namespace OVAConfigSwitcher.App
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _appSettings = appSettings?.Value ?? throw new ArgumentNullException(nameof(appSettings));
-            configSwitcher = InitialiseConfigSwitcher();
+            configSwitcher = new ConfigSwitcher(appSettings);
         }
 
         public void Run(string[] args)
@@ -171,14 +171,6 @@ namespace OVAConfigSwitcher.App
 
             _logger.LogInformation($"Now using: {agencyConfigurationFile.EnvironmentName} => " +
                 $"{agencyConfigurationFile.AgencyFileName}. Configuration switch successful");
-        }
-        private ConfigSwitcher InitialiseConfigSwitcher()
-        {
-            var currentConfig = new RegistryStream().Read(_appSettings.RegistryKey)
-                .Where(element => element.Name == "ConfigFilePath")
-                .Select(element => element).FirstOrDefault().Value;
-
-            return new ConfigSwitcher(_appSettings.RootDirectory, currentConfig);
         }
         private void Print(List<AgencyConfigurationFile> configFiles)
         {

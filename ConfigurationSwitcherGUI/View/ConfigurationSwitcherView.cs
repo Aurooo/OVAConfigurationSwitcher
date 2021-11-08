@@ -23,6 +23,7 @@ namespace ConfigurationSwitcherGUI.View
         {
             presenter = new ConfigurationSwitcherPresenter(this, appsettings, logger);
             InitializeComponent();
+            btnApply.Enabled = false;
         }
 
         public void ShowView()
@@ -56,12 +57,28 @@ namespace ConfigurationSwitcherGUI.View
             var tree = sender as TreeView;
 
             if (tree.SelectedNode.Text.ToLower().Contains(".xml"))
+            {
                 tbFilePath.Text = Path.Combine("..", tree.SelectedNode.Parent.Text, tree.SelectedNode.Text);
+                btnApply.Enabled = true;
+            }
+
+            lblError.Text = "";
+                
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            presenter.Apply(twConfigurations.SelectedNode.Parent.Text, twConfigurations.SelectedNode.Text);
+            bool applied = presenter.Apply(twConfigurations.SelectedNode.Parent.Text, twConfigurations.SelectedNode.Text);
+
+            if (applied)
+            {
+                lblError.Text = "Configuration applied";
+                btnApply.Enabled = false;
+            }
+            else
+            {
+                lblError.Text = "Could not apply configuration";
+            }
         }
     }
 }

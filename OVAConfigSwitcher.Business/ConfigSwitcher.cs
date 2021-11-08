@@ -16,8 +16,8 @@ namespace OVAConfigSwitcher.Business
 
         public ConfigSwitcher(IOptions<AppSettings> appSettings)
         {
-            _rootPath = appSettings.Value.RootDirectory ?? throw new ArgumentNullException(nameof(appSettings.Value.RootDirectory));
-            _registryKey = appSettings.Value.RegistryKey ?? throw new ArgumentNullException(nameof(appSettings.Value.RegistryKey));
+            _rootPath = appSettings.Value.RootDirectory ?? throw new ArgumentNullException(nameof(appSettings.Value.RootDirectory) + " is null");
+            _registryKey = appSettings.Value.RegistryKey ?? throw new ArgumentNullException(nameof(appSettings.Value.RegistryKey) + " is null");
         }
 
         public bool ApplyConfigurationFile(AgencyConfigurationFile agencyConfigurationFile)
@@ -35,13 +35,6 @@ namespace OVAConfigSwitcher.Business
             File.Copy(agencyConfigurationFile.FilePath, currentConfiguration, true);
 
             return true;
-        }
-
-        private string GetCurrentConfiguration()
-        {
-            return new RegistryStream().Read(_registryKey)
-                .Where(element => element.Name == "ConfigFilePath")
-                .Select(element => element).FirstOrDefault().Value;
         }
 
         public IEnumerable<AgencyConfigurationFile> GetAgencyConfigurationFiles(string environmentName)
@@ -69,6 +62,13 @@ namespace OVAConfigSwitcher.Business
             };
 
             return environments;
+        }
+
+        private string GetCurrentConfiguration()
+        {
+            return new RegistryStream().Read(_registryKey)
+                .Where(element => element.Name == "ConfigFilePath")
+                .Select(element => element).FirstOrDefault().Value;
         }
     }
 }
