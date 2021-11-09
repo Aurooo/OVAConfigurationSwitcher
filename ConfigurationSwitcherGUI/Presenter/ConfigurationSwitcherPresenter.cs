@@ -16,7 +16,8 @@ namespace ConfigurationSwitcherGUI.Presenter
     {
         private readonly ILogger _logger;
         private readonly AppSettings _appSettings;
-        private readonly ConfigSwitcher configSwitcher;
+        private readonly ConfigSwitcher _configSwitcher;
+
         private IConfigurationSwitcherView view { get; }
 
         public ConfigurationSwitcherPresenter(IConfigurationSwitcherView view, IOptions<AppSettings> appsettings, ILogger<ConfigurationSwitcherPresenter> logger)
@@ -24,8 +25,8 @@ namespace ConfigurationSwitcherGUI.Presenter
             this.view = view ?? throw new ArgumentNullException(nameof(view) + " is null");
             _appSettings = appsettings.Value ?? throw new ArgumentNullException(nameof(appsettings) + " is null");
             _logger = logger ?? throw new ArgumentNullException(nameof(_logger) + " is null");
+            _configSwitcher = new ConfigSwitcher(appsettings);
 
-            configSwitcher = new ConfigSwitcher(appsettings);
         }
 
         public IConfigurationSwitcherView ShowView()
@@ -34,11 +35,11 @@ namespace ConfigurationSwitcherGUI.Presenter
         }
         public void LoadView()
         {
-            view.Environments = configSwitcher.GetEnvironments().Select(environment => environment.EnvironmentName);
+            view.Environments = _configSwitcher.GetEnvironments().Select(environment => environment.EnvironmentName);
         }
         public IEnumerable<string> GetConfigurations(string environmentName)
         {
-            return configSwitcher.GetAgencyConfigurationFiles(environmentName).Select(configuration => configuration.AgencyFileName);
+            return _configSwitcher.GetAgencyConfigurationFiles(environmentName).Select(configuration => configuration.AgencyFileName);
         }
         public void ApplyConfiguration(string environment, string agencyConfiguration)
         {
@@ -46,7 +47,7 @@ namespace ConfigurationSwitcherGUI.Presenter
             
             try
             {
-                configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
+                _configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
 
                 MessageBox.Show("Configuration applied", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

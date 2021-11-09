@@ -80,7 +80,7 @@
             this.lblEnvironments.TabIndex = 4;
             this.lblEnvironments.Text = "Environment:";
             // 
-            // Form1
+            // ConfigurationSwitcherView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -90,7 +90,8 @@
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.cbConfigurations);
             this.Controls.Add(this.cbEnvironments);
-            this.Name = "Form1";
+            this.Name = "ConfigurationSwitcherView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuration Switcher";
             this.Load += new System.EventHandler(this.ConfigurationSwitcherView_Load);
             this.ResumeLayout(false);
