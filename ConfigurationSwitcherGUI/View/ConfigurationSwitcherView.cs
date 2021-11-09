@@ -21,7 +21,6 @@ namespace ConfigurationSwitcherGUI.View
             ConfigureView();
         }
 
-        
         public void ShowError(string ErrorMessage)
         {
             lblError.Text = ErrorMessage;

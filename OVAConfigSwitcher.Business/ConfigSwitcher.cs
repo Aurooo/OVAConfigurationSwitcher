@@ -59,7 +59,7 @@ namespace OVAConfigSwitcher.Business
             foreach (var environment in Directory.GetDirectories(_rootPath))
             {
                 environments.Add(new EnvironmentType(environment));
-            };
+            }
 
             return environments;
         }
