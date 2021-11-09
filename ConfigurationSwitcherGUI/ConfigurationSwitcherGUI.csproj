@@ -174,24 +174,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\ConfigurationSwitcherView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ConfigurationSwitcherView.Designer.cs">
+      <DependentUpon>ConfigurationSwitcherView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\EnvironmentDirectory.cs" />
     <Compile Include="Presenter\ConfigurationSwitcherPresenter.cs" />
     <Compile Include="Presenter\IConfigurationSwitcherPresenter.cs" />
-    <Compile Include="View\ConfigurationSwitcherForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\ConfigurationSwitcherForm.Designer.cs">
-      <DependentUpon>ConfigurationSwitcherForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\IConfigurationSwitcherView.cs" />
+    <Compile Include="Views\IConfigurationSwitcherView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\ConfigurationSwitcherView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\ConfigurationSwitcherView.Designer.cs">
+    <EmbeddedResource Include="Views\ConfigurationSwitcherView.resx">
       <DependentUpon>ConfigurationSwitcherView.cs</DependentUpon>
-    </Compile>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -201,12 +198,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\ConfigurationSwitcherForm.resx">
-      <DependentUpon>ConfigurationSwitcherForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\ConfigurationSwitcherView.resx">
-      <DependentUpon>ConfigurationSwitcherView.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

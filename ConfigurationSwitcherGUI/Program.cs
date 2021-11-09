@@ -1,5 +1,5 @@
 ﻿using ConfigurationSwitcherGUI.Presenter;
-using ConfigurationSwitcherGUI.View;
+using ConfigurationSwitcherGUI.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

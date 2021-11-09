@@ -3,10 +3,11 @@ using OVAConfigSwitcher.Business.Contracts.Models;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ConfigurationSwitcherGUI.View
+namespace ConfigurationSwitcherGUI.Views
 {
     public interface IConfigurationSwitcherView
     {
-        void ShowError(string ErrorMessage);
+        IEnumerable<string> Environments { set; }
+        IEnumerable<string> Configurations { set; }
     }
 }

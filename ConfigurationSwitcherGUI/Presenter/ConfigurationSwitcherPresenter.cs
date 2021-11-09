@@ -1,4 +1,4 @@
-﻿using ConfigurationSwitcherGUI.View;
+﻿using ConfigurationSwitcherGUI.Views;
 using ConfigurationSwitcherGUI.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -17,7 +17,7 @@ namespace ConfigurationSwitcherGUI.Presenter
         private readonly ILogger _logger;
         private readonly AppSettings _appSettings;
         private readonly ConfigSwitcher configSwitcher;
-        public IConfigurationSwitcherView view { get; }
+        private IConfigurationSwitcherView view { get; }
 
         public ConfigurationSwitcherPresenter(IConfigurationSwitcherView view, IOptions<AppSettings> appsettings, ILogger<ConfigurationSwitcherPresenter> logger)
         {
@@ -32,33 +32,23 @@ namespace ConfigurationSwitcherGUI.Presenter
         {
             return view;
         }
-        public IEnumerable<EnvironmentDirectory> GetEnvironmentDirectories()
+        public void LoadView()
         {
-            string name;
-            var environments = new List<EnvironmentDirectory>();
-
-            foreach (var environment in configSwitcher.GetEnvironments().ToList())
-            {
-                var files = new List<AgencyConfigurationFile>();
-
-                name = environment.EnvironmentName;
-
-                foreach (var file in configSwitcher.GetAgencyConfigurationFiles(environment.EnvironmentName).ToList())
-                    files.Add(file);
-
-
-                environments.Add(new EnvironmentDirectory(name, files));
-            }
-
-            return environments;
+            view.Environments = configSwitcher.GetEnvironments().Select(environment => environment.EnvironmentName);
         }
-        public bool Apply(string environment, string agencyConfiguration)
+        public IEnumerable<string> GetConfigurations(string environmentName)
+        {
+            return configSwitcher.GetAgencyConfigurationFiles(environmentName).Select(configuration => configuration.AgencyFileName);
+        }
+        public void ApplyConfiguration(string environment, string agencyConfiguration)
         {
             var agencyConfigurationFile = new AgencyConfigurationFile(Path.Combine(_appSettings.RootDirectory, environment, agencyConfiguration));
-            bool applied = false;
+            
             try
             {
-                applied = configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
+                configSwitcher.ApplyConfigurationFile(agencyConfigurationFile);
+
+                MessageBox.Show("Configuration applied", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 _logger.LogInformation($"Now using: ({agencyConfigurationFile.EnvironmentName})" +
                     $"{agencyConfigurationFile.AgencyFileName}. Configuration switch successful");
@@ -71,8 +61,6 @@ namespace ConfigurationSwitcherGUI.Presenter
                     $"({agencyConfigurationFile.EnvironmentName})" +
                     $"{agencyConfigurationFile.AgencyFileName}. Configuration switch unsuccessful");
             }
-
-            return applied;
         }
     }
 }
