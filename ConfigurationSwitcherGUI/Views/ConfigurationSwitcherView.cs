@@ -1,16 +1,10 @@
 ﻿using ConfigurationSwitcherGUI.Presenter;
-using ConfigurationSwitcherGUI.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OVAConfigSwitcher.Business.Contracts.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConfigurationSwitcherGUI.Views
@@ -18,6 +12,7 @@ namespace ConfigurationSwitcherGUI.Views
     public partial class ConfigurationSwitcherView : Form, IConfigurationSwitcherView
     {
         public IConfigurationSwitcherPresenter presenter;
+
         public ConfigurationSwitcherView(IOptions<AppSettings> appsettings, ILogger<ConfigurationSwitcherPresenter> logger)
         {
             presenter = new ConfigurationSwitcherPresenter(this, appsettings, logger);
@@ -31,12 +26,12 @@ namespace ConfigurationSwitcherGUI.Views
                 cbEnvironments.DataSource = value.ToList();
             }
         }
-
-        public IEnumerable<string> Configurations
+        public IEnumerable<AgencyConfigurationFile> Configurations
         {
             set
             {
                 cbConfigurations.DataSource = value.ToList();
+                cbConfigurations.DisplayMember = "AgencyFileName";
             }
         }
 

@@ -38,23 +38,23 @@
             // cbEnvironments
             // 
             this.cbEnvironments.FormattingEnabled = true;
-            this.cbEnvironments.Location = new System.Drawing.Point(12, 25);
+            this.cbEnvironments.Location = new System.Drawing.Point(12, 46);
             this.cbEnvironments.Name = "cbEnvironments";
-            this.cbEnvironments.Size = new System.Drawing.Size(205, 21);
+            this.cbEnvironments.Size = new System.Drawing.Size(298, 21);
             this.cbEnvironments.TabIndex = 0;
             this.cbEnvironments.SelectedIndexChanged += new System.EventHandler(this.cbEnvironments_SelectedIndexChanged);
             // 
             // cbConfigurations
             // 
             this.cbConfigurations.FormattingEnabled = true;
-            this.cbConfigurations.Location = new System.Drawing.Point(12, 76);
+            this.cbConfigurations.Location = new System.Drawing.Point(12, 97);
             this.cbConfigurations.Name = "cbConfigurations";
-            this.cbConfigurations.Size = new System.Drawing.Size(205, 21);
+            this.cbConfigurations.Size = new System.Drawing.Size(298, 21);
             this.cbConfigurations.TabIndex = 1;
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(142, 127);
+            this.btnApply.Location = new System.Drawing.Point(235, 137);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(75, 23);
             this.btnApply.TabIndex = 2;
@@ -65,7 +65,7 @@
             // lblConfigurations
             // 
             this.lblConfigurations.AutoSize = true;
-            this.lblConfigurations.Location = new System.Drawing.Point(12, 60);
+            this.lblConfigurations.Location = new System.Drawing.Point(9, 81);
             this.lblConfigurations.Name = "lblConfigurations";
             this.lblConfigurations.Size = new System.Drawing.Size(72, 13);
             this.lblConfigurations.TabIndex = 3;
@@ -74,7 +74,7 @@
             // lblEnvironments
             // 
             this.lblEnvironments.AutoSize = true;
-            this.lblEnvironments.Location = new System.Drawing.Point(9, 9);
+            this.lblEnvironments.Location = new System.Drawing.Point(12, 30);
             this.lblEnvironments.Name = "lblEnvironments";
             this.lblEnvironments.Size = new System.Drawing.Size(69, 13);
             this.lblEnvironments.TabIndex = 4;
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 172);
+            this.ClientSize = new System.Drawing.Size(322, 172);
             this.Controls.Add(this.lblEnvironments);
             this.Controls.Add(this.lblConfigurations);
             this.Controls.Add(this.btnApply);

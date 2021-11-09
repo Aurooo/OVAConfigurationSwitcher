@@ -14,32 +14,33 @@ namespace ConfigurationSwitcherGUI.Presenter
 {
     public class ConfigurationSwitcherPresenter : IConfigurationSwitcherPresenter
     {
-        private readonly ILogger _logger;
+        
+        private readonly IConfigurationSwitcherView _view;
         private readonly AppSettings _appSettings;
+        private readonly ILogger _logger;
         private readonly ConfigSwitcher _configSwitcher;
-
-        private IConfigurationSwitcherView view { get; }
+        private readonly IEnumerable<EnvironmentDirectory> _environmentDirectories;
 
         public ConfigurationSwitcherPresenter(IConfigurationSwitcherView view, IOptions<AppSettings> appsettings, ILogger<ConfigurationSwitcherPresenter> logger)
         {
-            this.view = view ?? throw new ArgumentNullException(nameof(view) + " is null");
+            this._view = view ?? throw new ArgumentNullException(nameof(view) + " is null");
             _appSettings = appsettings.Value ?? throw new ArgumentNullException(nameof(appsettings) + " is null");
             _logger = logger ?? throw new ArgumentNullException(nameof(_logger) + " is null");
             _configSwitcher = new ConfigSwitcher(appsettings);
-
+            _environmentDirectories = new EnvironmentDirectoriesFactory().GetEnvironmentDirectories(_configSwitcher);
         }
 
         public IConfigurationSwitcherView ShowView()
         {
-            return view;
+            return _view;
         }
         public void LoadView()
         {
-            view.Environments = _configSwitcher.GetEnvironments().Select(environment => environment.EnvironmentName);
+            _view.Environments = _environmentDirectories.Select(environment => environment.Name);
         }
-        public IEnumerable<string> GetConfigurations(string environmentName)
+        public IEnumerable<AgencyConfigurationFile> GetConfigurations(string environmentName)
         {
-            return _configSwitcher.GetAgencyConfigurationFiles(environmentName).Select(configuration => configuration.AgencyFileName);
+            return _environmentDirectories.Where(directory => directory.Name == environmentName).Single().Files;
         }
         public void ApplyConfiguration(string environment, string agencyConfiguration)
         {

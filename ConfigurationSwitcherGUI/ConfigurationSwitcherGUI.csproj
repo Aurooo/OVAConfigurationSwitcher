@@ -174,6 +174,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnvironmentDirectoriesFactory.cs" />
     <Compile Include="Views\ConfigurationSwitcherView.cs">
       <SubType>Form</SubType>
     </Compile>

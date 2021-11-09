@@ -27,8 +27,8 @@ namespace ConfigurationSwitcherGUI
 
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
-                var configurationSwitcherPresenter = serviceProvider.GetRequiredService<ConfigurationSwitcherPresenter>();
-                Application.Run(configurationSwitcherPresenter.ShowView() as Form);
+                var configurationSwitcherPresenter = serviceProvider.GetRequiredService<ConfigurationSwitcherView>();
+                Application.Run(configurationSwitcherPresenter);
             }
         }
 
@@ -47,8 +47,7 @@ namespace ConfigurationSwitcherGUI
 
             services.Configure<AppSettings>(configuration.GetSection("App"));
 
-            services.AddTransient<IConfigurationSwitcherView, ConfigurationSwitcherView>();
-            services.AddTransient<ConfigurationSwitcherPresenter>();
+            services.AddTransient<ConfigurationSwitcherView>();
         }
     }
 }
