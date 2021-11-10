@@ -7,5 +7,7 @@ namespace ConfigurationSwitcherGUI.Views
     {
         IEnumerable<string> Environments { set; }
         IEnumerable<AgencyConfigurationFile> Configurations { set; }
+        public string SelectedEnvironment { get; set; }
+        public string SelectedConfiguration { get; set; }
     }
 }

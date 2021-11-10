@@ -35,9 +35,33 @@ namespace ConfigurationSwitcherGUI.Views
             }
         }
 
+        public string SelectedEnvironment
+        {
+            get
+            {
+                return cbEnvironments.Text;
+            }
+            set
+            {
+                SelectedEnvironment = cbEnvironments.Text;
+            }
+        }
+
+        public string SelectedConfiguration
+        {
+            get
+            {
+                return cbConfigurations.Text;
+            }
+            set
+            {
+                SelectedConfiguration = cbConfigurations.Text;
+            }
+        }
+
         private void cbEnvironments_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Configurations = presenter.GetConfigurations((sender as ComboBox).SelectedItem.ToString());
+            Configurations = presenter.GetConfigurations();
         }
 
         private void ConfigurationSwitcherView_Load(object sender, EventArgs e)
@@ -47,7 +71,7 @@ namespace ConfigurationSwitcherGUI.Views
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            presenter.ApplyConfiguration(cbEnvironments.Text, cbConfigurations.Text);
+            presenter.ApplyConfiguration();
         }
     }
 }

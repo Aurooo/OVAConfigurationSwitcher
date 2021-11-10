@@ -6,8 +6,8 @@ namespace ConfigurationSwitcherGUI.Presenter
 {
     public interface IConfigurationSwitcherPresenter
     {
-        void ApplyConfiguration(string environment, string agencyConfiguration);
-        IEnumerable<AgencyConfigurationFile> GetConfigurations(string environmentName);
+        void ApplyConfiguration();
+        IEnumerable<AgencyConfigurationFile> GetConfigurations();
         void LoadView();
     }
 }

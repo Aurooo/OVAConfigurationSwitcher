@@ -38,13 +38,13 @@ namespace ConfigurationSwitcherGUI.Presenter
         {
             _view.Environments = _environmentDirectories.Select(environment => environment.Name);
         }
-        public IEnumerable<AgencyConfigurationFile> GetConfigurations(string environmentName)
+        public IEnumerable<AgencyConfigurationFile> GetConfigurations()
         {
-            return _environmentDirectories.Where(directory => directory.Name == environmentName).Single().Files;
+            return _environmentDirectories.Where(directory => directory.Name == _view.SelectedEnvironment).Single().Files;
         }
-        public void ApplyConfiguration(string environment, string agencyConfiguration)
+        public void ApplyConfiguration()
         {
-            var agencyConfigurationFile = new AgencyConfigurationFile(Path.Combine(_appSettings.RootDirectory, environment, agencyConfiguration));
+            var agencyConfigurationFile = new AgencyConfigurationFile(Path.Combine(_appSettings.RootDirectory, _view.SelectedEnvironment, _view.SelectedConfiguration));
             
             try
             {
